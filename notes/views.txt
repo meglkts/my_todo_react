@@ -1,0 +1,17 @@
+app body
+  title: todos
+  listDisplay
+    new task
+      check all button
+      text input field
+    task list
+      task item
+        icon, text, x
+        icon, text, x
+    footer
+      active count
+      selectors
+        all
+        active
+        completed
+      clear completed
