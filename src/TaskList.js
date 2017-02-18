@@ -1,4 +1,4 @@
-const { clone } = require('./utils')
+const { clone, merge } = require('./utils')
 const uuid = require('uuid')
 const generateId = uuid.v4
 
@@ -25,9 +25,8 @@ const toggleStatus = (task, updated) => {
 }
 
 const addTask = (now, list, text) => {
-  const newList = clone(list)
   const newestTask = makeTask(generateId(), text, now())
-  merge(newList, {[newestTask.id]: newestTask})
+  const newList = merge(list, {[newestTask.id]: newestTask})
   return {
     newList,
     newestTask
