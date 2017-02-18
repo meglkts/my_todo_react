@@ -1,4 +1,6 @@
 const { clone } = require('./utils')
+const uuid = require('uuid')
+const generateId = uuid.v4
 
 const makeTask = (id, text, date) => {
   return {
@@ -22,9 +24,18 @@ const toggleStatus = (task, updated) => {
   return updatedTask
 }
 
-
+const addTask = (now, list, text) => {
+  const newList = clone(list)
+  const newestTask = makeTask(generateId(), text, now())
+  newList.push(newestTask)
+  return {
+    newList,
+    newestTask
+  }
+}
 
 module.exports = {
   makeTask,
-  toggleStatus
+  toggleStatus,
+  addTask
 }
