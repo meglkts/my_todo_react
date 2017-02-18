@@ -1,5 +1,6 @@
 const { makeTask, toggleStatus, addTask } = require('./TaskList')
 const { deepEqual } = require('assert')
+const { merge } = require('merge')
 
 describe('TaskList.js', () => {
   describe('makeTask()', () => {
@@ -50,10 +51,16 @@ describe('TaskList.js', () => {
   describe('addTask()', () => {
     it('should add a new task to the list', () => {
       const now = () => 1234
-      const task = makeTask('id', 'text', now() - 1)
-      const list = [task]
+      const task = makeTask('id1', 'text', now() - 1)
+      const list = {
+        id1: task
+      }
       const { newList, newestTask } = addTask(now, list, 'text two')
-      deepEqual(newList, [task, newestTask])
+      const expectedNewList = {
+        id1: task,
+        [newestTask.id]: newestTask
+      }
+      deepEqual(newList, expectedNewList)
     })
   })
 })

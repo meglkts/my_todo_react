@@ -12,7 +12,14 @@ const clone = (obj) => {
   }, acc)
 }
 
+const merge = (a, b) => {
+  const copyA = clone(a)
+  const copyB = clone(b)
+  return Object.assign({}, a, b)
+}
+
 module.exports = {
   clone,
-  isArray
+  isArray,
+  merge
 }

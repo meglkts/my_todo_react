@@ -27,7 +27,7 @@ const toggleStatus = (task, updated) => {
 const addTask = (now, list, text) => {
   const newList = clone(list)
   const newestTask = makeTask(generateId(), text, now())
-  newList.push(newestTask)
+  merge(newList, {[newestTask.id]: newestTask})
   return {
     newList,
     newestTask

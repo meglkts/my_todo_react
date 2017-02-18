@@ -1,5 +1,5 @@
 const { equal, deepEqual, notEqual } = require('assert')
-const { clone, isArray } = require('./utils')
+const { clone, isArray, merge } = require('./utils')
 
 describe('utils.js', () => {
   describe('clone()', () => {
@@ -24,6 +24,15 @@ describe('utils.js', () => {
     it('should return true if input is array [], false if object {}', () => {
       equal(isArray(['foo', 'bar']), true)
       equal(isArray({foo: 'bar'}), false)
+    })
+  })
+  describe('merge()', () => {
+    it('should merge two objects into one object, second object overwrites first', () => {
+      const firstObj = { a: 1, b: 2 }
+      const secObj = { b: 'muahaha', c: 4}
+      const merged = merge(firstObj, secObj)
+      const expected = {a:1, b:'muahaha', c:4}
+      deepEqual(merged, expected)
     })
   })
 })
