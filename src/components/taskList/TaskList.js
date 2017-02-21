@@ -2,7 +2,7 @@ const { createElement: r } = require('react')
 const { TaskItem } = require('../taskItem/TaskItem')
 
 const TaskList = ({tasks}) => {
-  return r('div', {},
+  return r('div', { className: 'task-list flex-column' },
     generateTaskItems(tasks)
   )
 }

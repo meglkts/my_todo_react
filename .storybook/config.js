@@ -1,5 +1,7 @@
 import { configure } from '@kadira/storybook'
-import '../src/index.css';
+import '../src/styles/app.css';
+import '../src/styles/list.css';
+import '../src/styles/item.css';
 
 function loadStories() {
   require('../src/components/taskItem/TaskItem.story.js'),

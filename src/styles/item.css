@@ -1,30 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  color: black;
-}
-
-.flex-row {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.grow-1 {
-  flex-grow: 1;
-}
-
-.todo-btn {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-  padding: 0;
-}
-
 .status-toggle {
   border: 1px solid gray;
   background-color: transparent;
@@ -51,12 +24,4 @@ body {
   width: 1rem;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.left-align-row-pad {
-  padding: 1rem 1rem 1rem .5rem;
-}
-
-.pd-sm {
-  padding: .5rem;
 }
