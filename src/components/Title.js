@@ -1,7 +1,7 @@
 const { createElement: r } = require('react')
 
 const Title = () => {
-  return r('div', {}, 'todos')
+  return r('h1', {}, 'todos')
 }
 
 module.exports = {

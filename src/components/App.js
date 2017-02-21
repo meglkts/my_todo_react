@@ -1,14 +1,14 @@
 const React = require('react')
 const r = React.createElement
 const { Title } = require('./Title')
-// require('./App.css')
+const { TaskListWrapper } = require('./taskList/TaskListWrapper')
 
 const App = React.createClass({
   render () {
     return (
       r('div', {className: 'App'},
-        r(Title, {className: 'Title'}),
-        r('p', {className: 'App-intro'}, 'list')
+        r(Title),
+        r(TaskListWrapper)
       )
     )
   }

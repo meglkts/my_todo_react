@@ -5,5 +5,5 @@ const TaskInput = () => {
 }
 
 module.exports = {
-  Title
+  TaskInput
 }

@@ -1,6 +1,6 @@
 const { createElement: r } = require('react')
 
-const ClearButton = ({visible}) => {
+const ClearButton = () => {
   return r('button', { className: `todo-btn clear-task`})
 }
 
