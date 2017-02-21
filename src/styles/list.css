@@ -3,3 +3,8 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
+.task-list-wrapper {
+  background-color: white;
+  width: 50%;
+}

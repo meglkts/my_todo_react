@@ -3,10 +3,10 @@ const { TaskInput } = require('./TaskInput')
 const { TaskList } = require('./TaskList')
 const { TaskListFooter } = require('./TaskListFooter')
 
-const TaskListWrapper = (tasks) => {
+const TaskListWrapper = ({tasks}) => {
   return r('div', { className: 'task-list-wrapper' },
     r(TaskInput, {}),
-    r(TaskList, {}),
+    r(TaskList, {tasks}),
     r(TaskListFooter, {})
   )
 }

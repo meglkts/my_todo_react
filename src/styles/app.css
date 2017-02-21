@@ -1,8 +1,13 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  color: black;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: gray;
+  background-color: #e6e6e6;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
 }
 
 .flex-row {
@@ -26,7 +31,7 @@ body {
 }
 
 .left-align-row-pad {
-  padding: 1rem 1rem 1rem .5rem;
+  padding: .75rem .75rem .75rem .5rem;
   box-sizing: border-box;
 }
 

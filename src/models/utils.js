@@ -15,7 +15,7 @@ const clone = (obj) => {
 const merge = (a, b) => {
   const copyA = clone(a)
   const copyB = clone(b)
-  return Object.assign({}, a, b)
+  return Object.assign({}, copyA, copyB)
 }
 
 module.exports = {
