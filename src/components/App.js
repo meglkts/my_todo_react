@@ -1,7 +1,7 @@
 const React = require('react')
 const r = React.createElement
 const { Title } = require('./Title')
-const { TaskListWrapper } = require('./taskList/TaskListWrapper')
+const { TaskListWrapper } = require('./TaskListWrapper')
 
 const { makeTask } = require('../models/TaskList')
 const text = ['laundry', 'shopping', 'call mom', 'mow lawn', 'email friend']

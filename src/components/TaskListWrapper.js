@@ -1,7 +1,7 @@
 const { createElement: r } = require('react')
-const { TaskInput } = require('./TaskInput')
-const { TaskList } = require('./TaskList')
-const { TaskListFooter } = require('./TaskListFooter')
+const { TaskInput } = require('./taskInput/TaskInput')
+const { TaskList } = require('./taskList/TaskList')
+const { TaskListFooter } = require('./taskListFooter/TaskListFooter')
 
 const TaskListWrapper = ({tasks}) => {
   return r('div', { className: 'task-list-wrapper' },
