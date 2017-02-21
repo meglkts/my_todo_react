@@ -20,12 +20,14 @@ describe('utils.js', () => {
       equal(isArray(copy), true)
     })
   })
+
   describe('isArray()', () => {
     it('should return true if input is array [], false if object {}', () => {
       equal(isArray(['foo', 'bar']), true)
       equal(isArray({foo: 'bar'}), false)
     })
   })
+
   describe('merge()', () => {
     it('should merge two objects into one object, second object overwrites first', () => {
       const firstObj = { a: 1, b: 2 }

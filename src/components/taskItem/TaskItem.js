@@ -3,9 +3,9 @@ const { StatusToggle } = require('./StatusToggle')
 const { TaskText } = require('./TaskText')
 const { ClearButton } = require('./ClearButton')
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task, key}) => {
   return (
-    r('div', { className: 'flex-row left-align-row-pad task-item'},
+    r('div', { className: 'flex-row left-align-row-pad task-item', key},
       r(StatusToggle, { status: task.status }),
       r(TaskText, { text: task.text, status: task.status }),
       r(ClearButton)

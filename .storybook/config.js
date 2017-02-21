@@ -2,7 +2,8 @@ import { configure } from '@kadira/storybook'
 import '../src/index.css';
 
 function loadStories() {
-  require('../src/components/taskItem/TaskItem.story.js')
+  require('../src/components/taskItem/TaskItem.story.js'),
+  require('../src/components/taskList/TaskList.story.js')
   // You can require as many stories as you need.
 }
 
