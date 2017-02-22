@@ -11,16 +11,16 @@ const listStyle = {
 storiesOf('TaskListFooter', module)
   .add('All selected', () => (
     r('div', { style: listStyle },
-      r(TaskListFooter, { activeCount: 5, filter: 'all' })
+      r(TaskListFooter, { activeCount: 5, filter: 'All' })
     )
   ))
   .add('Active selected', () => (
     r('div', { style: listStyle },
-      r(TaskListFooter, { activeCount: 5, filter: 'active' })
+      r(TaskListFooter, { activeCount: 5, filter: 'Active' })
     )
   ))
   .add('Completed selected', () => (
     r('div', { style: listStyle },
-      r(TaskListFooter, { activeCount: 5, filter: 'completed' })
+      r(TaskListFooter, { activeCount: 5, filter: 'Completed' })
     )
   ))

@@ -3,6 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: gray;
   background-color: #f2f2f2;
+  opacity: 0.7;
 }
 
 .App {
@@ -14,22 +15,31 @@ body {
   font-size: 3rem;
 }
 
+.pd-title {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
 .text-main {
   font-size: 1.5rem;
+}
+.pd-main {
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 .text-sub {
   font-size: .75rem;
+}
+.pd-sub {
+  padding: .25rem;
+  box-sizing: border-box;
 }
 
 .flex-row {
   display: flex;
   align-items: center;
   width: 100%;
-}
-
-.space-btwn {
-  justify-content: space-between;
 }
 
 .grow-1 {
@@ -43,7 +53,6 @@ body {
   font: inherit;
   line-height: normal;
   overflow: visible;
-  padding: 0;
 }
 
 .icon {
@@ -54,8 +63,4 @@ body {
 .left-align-row-pad {
   padding: .5rem .5rem .5rem .5rem;
   box-sizing: border-box;
-}
-
-.pd-sm {
-  padding: .5rem;
 }

@@ -25,6 +25,15 @@
   font-style: italic;
 }
 
+.status-filter {
+  justify-content: center;
+}
+
 .filter-button {
-  padding: {}
+  margin: 0.5rem;
+}
+
+.filter-button.selected-filter {
+  border: 1px solid red;
+  border-radius: .25rem;
 }

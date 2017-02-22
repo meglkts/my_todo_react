@@ -4,9 +4,10 @@ const { TaskListWrapper } = require('./TaskListWrapper')
 const { makeTask, toggleStatus } = require('../models/TaskList')
 
 const task1 = makeTask('task-id-1', 'laundry', Date.now())
-const newTask = makeTask('task-id-2', 'groceries', Date.now())
-const task2 = toggleStatus(newTask, Date.now())
-const task3 = makeTask('task-id-3', 'errands', Date.now())
+const newTask2 = makeTask('task-id-2', 'groceries', Date.now())
+const task2 = toggleStatus(newTask2, Date.now())
+const newTask3 = makeTask('task-id-3', 'errands', Date.now())
+const task3 = toggleStatus(newTask3, Date.now())
 const task4 = makeTask('task-id-4', 'email', Date.now())
 
 const appStyle = {
@@ -22,8 +23,18 @@ const tasks = {
 }
 
 storiesOf('TaskListWrapper', module)
-  .add('multiple tasks', () => (
+  .add('All tasks', () => (
     r('div', { style: appStyle },
-      r(TaskListWrapper, { tasks })
+      r(TaskListWrapper, { tasks, filter: 'All' })
+    )
+  ))
+  .add('Active tasks', () => (
+    r('div', { style: appStyle },
+      r(TaskListWrapper, { tasks, filter: 'Active' })
+    )
+  ))
+  .add('Completd tasks', () => (
+    r('div', { style: appStyle },
+      r(TaskListWrapper, { tasks, filter: 'Completed' })
     )
   ))
