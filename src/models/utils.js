@@ -18,8 +18,14 @@ const merge = (a, b) => {
   return Object.assign({}, copyA, copyB)
 }
 
+const getPluralization = (noun, count) => {
+  if ( count === 1 ) return noun
+  return noun + 's'
+}
+
 module.exports = {
   clone,
   isArray,
-  merge
+  merge,
+  getPluralization
 }

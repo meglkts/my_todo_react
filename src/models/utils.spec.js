@@ -1,5 +1,5 @@
 const { equal, deepEqual, notEqual } = require('assert')
-const { clone, isArray, merge } = require('./utils')
+const { clone, isArray, merge, getPluralization } = require('./utils')
 
 describe('utils.js', () => {
   describe('clone()', () => {
@@ -35,6 +35,14 @@ describe('utils.js', () => {
       const merged = merge(firstObj, secObj)
       const expected = {a:1, b:'muahaha', c:4}
       deepEqual(merged, expected)
+    })
+  })
+
+  describe('getPluralization()', () => {
+    it('should return a string with appropriate pluralization based on count', () => {
+      deepEqual(getPluralization('cat', 1), 'cat')
+      deepEqual(getPluralization('cat', 5), 'cats')
+      deepEqual(getPluralization('cat', 0), 'cats')
     })
   })
 })

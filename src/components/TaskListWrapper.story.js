@@ -1,7 +1,7 @@
 const { createElement: r } = require('react')
 const { storiesOf, action } =require('@kadira/storybook')
 const { TaskListWrapper } = require('./TaskListWrapper')
-const { makeTask, toggleStatus } = require('../../models/TaskList')
+const { makeTask, toggleStatus } = require('../models/TaskList')
 
 const task1 = makeTask('task-id-1', 'laundry', Date.now())
 const newTask = makeTask('task-id-2', 'groceries', Date.now())
