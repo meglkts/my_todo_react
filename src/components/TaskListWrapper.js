@@ -6,7 +6,7 @@ const { TaskListFooter } = require('./taskListFooter/TaskListFooter')
 const TaskListWrapper = ({tasks, filter}) => {
   return r('div', { className: 'task-list-wrapper' },
     r(TaskInput, {}),
-    r(TaskList, {tasks, filter}),
+    r(TaskList, {tasks}),
     r(TaskListFooter, {filter})
   )
 }
