@@ -23,9 +23,15 @@ const getPluralization = (noun, count) => {
   return noun + 's'
 }
 
+const filter = (filterBy, array) => {
+  const arrayCopy = clone(array)
+  return array.filter(filterBy)
+}
+
 module.exports = {
   clone,
   isArray,
   merge,
-  getPluralization
+  getPluralization,
+  filter
 }

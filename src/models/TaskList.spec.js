@@ -1,4 +1,4 @@
-const { makeTask, toggleStatus, addTask } = require('./TaskList')
+const { makeTask, toggleStatus, addTask, filterTaskList } = require('./TaskList')
 const { deepEqual } = require('assert')
 const { merge } = require('merge')
 
@@ -61,6 +61,26 @@ describe('TaskList.js', () => {
         [newestTask.id]: newestTask
       }
       deepEqual(newList, expectedNewList)
+    })
+  })
+
+  describe('filterTaskList()', () => {
+    it('should return a task list filtered by filter', () => {
+      const active1 = makeTask('id1', 'text', Date.now())
+      const active2 = makeTask('id2', 'text', Date.now())
+      const temp1 = makeTask('id3', 'text', Date.now())
+      const temp2 = makeTask('id4', 'text', Date.now())
+      const completed1 = toggleStatus(temp1, Date.now())
+      const completed2 = toggleStatus(temp2, Date.now())
+      const filterActive = 'active'
+      const filterCompleted = 'completed'
+      const list = [active1, active2, completed1, completed2]
+      const activeList = filterTaskList(filterActive, list)
+      const completedList = filterTaskList(filterCompleted, list)
+      const expectedActive = [active1, active2]
+      const expectedCompleted = [completed1, completed2]
+      deepEqual(activeList, expectedActive)
+      deepEqual(completedList, expectedCompleted)
     })
   })
 })

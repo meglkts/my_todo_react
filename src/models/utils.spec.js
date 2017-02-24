@@ -1,5 +1,5 @@
 const { equal, deepEqual, notEqual } = require('assert')
-const { clone, isArray, merge, getPluralization } = require('./utils')
+const { clone, isArray, merge, getPluralization, filter } = require('./utils')
 
 describe('utils.js', () => {
   describe('clone()', () => {
@@ -35,6 +35,19 @@ describe('utils.js', () => {
       const merged = merge(firstObj, secObj)
       const expected = {a:1, b:'muahaha', c:4}
       deepEqual(merged, expected)
+    })
+  })
+
+  describe('filter()', () => {
+    it('should merge two objects into one object, second object overwrites first', () => {
+      const obj1 = { a: 1, b: 2, c: 3 }
+      const obj2 = { a: 1, b: 2, c: 3 }
+      const obj3 = { a: 'no', b: 2, c: 3 }
+      const list = [obj1, obj2, obj3]
+      const filterByFn = x => x.a === 1
+      const actual = filter(filterByFn, list)
+      const expected = [obj1, obj2]
+      deepEqual(actual, expected)
     })
   })
 
