@@ -1,7 +1,7 @@
 const { createElement: r } = require('react')
 const { storiesOf, action } =require('@kadira/storybook')
-const { TaskListWrapper } = require('./TaskListWrapper')
-const { makeTask, toggleStatus, tasksToTaskList, getActiveCount } = require('../models/TaskList')
+const { App } = require('./App')
+const { makeTask, toggleStatus, tasksToTaskList, getActiveCount, filterTaskList } = require('../models/TaskList')
 
 const task1 = makeTask('task-id-1', 'laundry', Date.now())
 const newTask2 = makeTask('task-id-2', 'groceries', Date.now())
@@ -9,11 +9,6 @@ const task2 = toggleStatus(newTask2, Date.now())
 const newTask3 = makeTask('task-id-3', 'errands', Date.now())
 const task3 = toggleStatus(newTask3, Date.now())
 const task4 = makeTask('task-id-4', 'email', Date.now())
-
-const appStyle = {
-  display: 'flex',
-  'justify-content': 'center'
-}
 
 const taskObj = {
   [task1.id]: task1,
@@ -23,21 +18,23 @@ const taskObj = {
 }
 
 const tasks = tasksToTaskList(taskObj)
+const activeTasks = filterTaskList('active', tasks)
+const completedTasks = filterTaskList('completed', tasks)
 const activeCount = getActiveCount(taskObj)
 
-storiesOf('TaskListWrapper', module)
-  .add('All tasks', () => (
-    r('div', { style: appStyle },
-      r(TaskListWrapper, { tasks, filter: 'All', activeCount })
+storiesOf('App', module)
+  .add('All tasks showing', () => (
+    r('div', {},
+      r(App, { tasks, filter: 'All', activeCount })
     )
   ))
-  .add('Active tasks', () => (
-    r('div', { style: appStyle },
-      r(TaskListWrapper, { tasks, filter: 'Active', activeCount })
+  .add('Active tasks filtered', () => (
+    r('div', {},
+      r(App, { tasks: activeTasks, filter: 'Active', activeCount })
     )
   ))
-  .add('Completd tasks', () => (
-    r('div', { style: appStyle },
-      r(TaskListWrapper, { tasks, filter: 'Completed', activeCount })
+  .add('Completd tasks filtered', () => (
+    r('div', {},
+      r(App, { tasks: completedTasks, filter: 'Completed', activeCount })
     )
   ))

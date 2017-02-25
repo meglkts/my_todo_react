@@ -25,12 +25,12 @@
   font-style: italic;
 }
 
-.status-filter {
-  justify-content: center;
+.task-list-footer {
+  width: 100%;
 }
 
-.filter-button {
-  margin: 0.5rem;
+.status-filter {
+  justify-content: center;
 }
 
 .filter-button.selected-filter {

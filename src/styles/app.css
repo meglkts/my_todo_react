@@ -8,7 +8,8 @@ body {
 
 .App {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .text-title {
@@ -32,18 +33,21 @@ body {
   font-size: .75rem;
 }
 .pd-sub {
-  padding: .25rem;
+  padding: .5rem;
   box-sizing: border-box;
 }
 
 .flex-row {
   display: flex;
   align-items: center;
-  width: 100%;
 }
 
 .grow-1 {
   flex-grow: 1;
+}
+
+.space-btwn {
+  justify-content: space-between;
 }
 
 .todo-btn {
