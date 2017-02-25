@@ -8,10 +8,7 @@ const { makeTask, toggleStatus } = require('../../models/TaskList')
 const task1 = makeTask('task-id-1', 'laundry', Date.now())
 const newTask = makeTask('task-id-2', 'groceries', Date.now())
 const task2 = toggleStatus(newTask, Date.now())
-const tasks = {
-  [task1.id]: task1,
-  [task2.id]: task2
-}
+const tasks = [task1, task2]
 
 describe('< TaskList />', () => {
   it('should render a list of TaskItems', () => {

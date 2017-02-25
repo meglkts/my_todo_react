@@ -1,9 +1,9 @@
 const { createElement: r } = require('react')
 const { TaskItem } = require('../taskItem/TaskItem')
+const { tasksToTaskList } = require('../../models/TaskList')
 
 const generateTaskItems = (tasks) => {
-  const taskList = Object.keys(tasks)
-  return taskList.map(k => TaskItem({task: tasks[k], key: k}))
+  return tasks.map(task => TaskItem({task, key: task.id}))
 }
 
 const TaskList = ({tasks}) => {
