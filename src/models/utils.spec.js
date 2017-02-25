@@ -1,5 +1,10 @@
 const { equal, deepEqual, notEqual } = require('assert')
-const { clone, isArray, merge, getPluralization, filter } = require('./utils')
+const { clone,
+        isArray,
+        merge,
+        getPluralization,
+        filter,
+        getValues } = require('./utils')
 
 describe('utils.js', () => {
   describe('clone()', () => {
@@ -18,6 +23,17 @@ describe('utils.js', () => {
       notEqual(a, copy)
       deepEqual(a, copy)
       equal(isArray(copy), true)
+    })
+
+    it('should return original values for integers and strings', () => {
+      const a = 5
+      const b = 'five'
+      const copyA = clone(a)
+      const copyB = clone(b)
+      equal(a, copyA)
+      deepEqual(a, copyA)
+      equal(b, copyB)
+      deepEqual(b, copyB)
     })
   })
 
@@ -56,6 +72,13 @@ describe('utils.js', () => {
       deepEqual(getPluralization('cat', 1), 'cat')
       deepEqual(getPluralization('cat', 5), 'cats')
       deepEqual(getPluralization('cat', 0), 'cats')
+    })
+  })
+
+  describe('getValues()', () => {
+    it('should return a string with appropriate pluralization based on count', () => {
+      const obj = { a: 1, b: 2, c: 3 }
+      deepEqual(getValues(obj), [1, 2, 3])
     })
   })
 })

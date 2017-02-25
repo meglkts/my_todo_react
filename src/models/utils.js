@@ -3,6 +3,7 @@ const isArray = (thing) => {
 }
 
 const clone = (obj) => {
+  if (typeof obj !== 'object') return obj
   const keys = Object.keys(obj)
   let acc = {}
   if (isArray(obj)) acc = []
@@ -28,10 +29,18 @@ const filter = (filterBy, array) => {
   return array.filter(filterBy)
 }
 
+const getValues = (obj) => {
+  const keys = Object.keys(obj)
+  return keys.map((k) => {
+    return clone(obj[k])
+  })
+}
+
 module.exports = {
   clone,
   isArray,
   merge,
   getPluralization,
-  filter
+  filter,
+  getValues
 }
