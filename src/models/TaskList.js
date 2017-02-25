@@ -1,4 +1,4 @@
-const { clone, merge, filter } = require('./utils')
+const { clone, merge, filter, getValues } = require('./utils')
 const uuid = require('uuid')
 const generateId = uuid.v4
 
@@ -38,9 +38,19 @@ const filterTaskList = (filterStatus, taskList) => {
   return filter(filterBy, taskList)
 }
 
+const tasksToTaskList = (tasks) => {
+  return getValues(tasks)
+}
+
+const getActiveCount = (tasks) => {
+  return filterTaskList('active', tasksToTaskList(tasks)).length
+}
+
 module.exports = {
   makeTask,
   toggleStatus,
   addTask,
-  filterTaskList
+  filterTaskList,
+  tasksToTaskList,
+  getActiveCount
 }

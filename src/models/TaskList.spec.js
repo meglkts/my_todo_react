@@ -1,4 +1,9 @@
-const { makeTask, toggleStatus, addTask, filterTaskList } = require('./TaskList')
+const { makeTask,
+        toggleStatus,
+        addTask,
+        filterTaskList,
+        tasksToTaskList,
+        getActiveCount } = require('./TaskList')
 const { deepEqual } = require('assert')
 const { merge } = require('merge')
 
@@ -81,6 +86,39 @@ describe('TaskList.js', () => {
       const expectedCompleted = [completed1, completed2]
       deepEqual(activeList, expectedActive)
       deepEqual(completedList, expectedCompleted)
+    })
+  })
+
+  describe('tasksToTaskList()', () => {
+    it('should return task objects in an array sorted by time created', () => {
+      const task1 = makeTask('task-id-1', 'laundry', Date.now())
+      const task2 = makeTask('task-id-2', 'groceries', Date.now())
+      const task3 = makeTask('task-id-3', 'errands', Date.now())
+      const task4 = makeTask('task-id-4', 'email', Date.now())
+      const tasks = {
+        [task1.id]: task1,
+        [task2.id]: task2,
+        [task3.id]: task3,
+        [task4.id]: task4
+      }
+      const actual = tasksToTaskList(tasks)
+      const expected = [task1, task2, task3, task4]
+      deepEqual(actual, expected)
+    })
+  })
+
+  describe('getActiveCount()', () => {
+    fit('should return a count of active tasks', () => {
+      const active1 = makeTask('id1', 'text', Date.now())
+      const active2 = makeTask('id2', 'text', Date.now())
+      const temp1 = makeTask('id3', 'text', Date.now())
+      const completed1 = toggleStatus(temp1, Date.now())
+      const tasks = {
+        [active1.id]: active1,
+        [active2.id]: active2,
+        [completed1.id]: completed1,
+      }
+      deepEqual(getActiveCount(tasks), 2)
     })
   })
 })
