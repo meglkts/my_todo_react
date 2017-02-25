@@ -5,7 +5,7 @@ const { ClearCompletedButton } = require('./ClearCompletedButton')
 
 const TaskListFooter = ({activeCount, filter}) => {
   return (
-    r('div', { className: 'flex-row text-sub space-btwn'},
+    r('div', { className: 'flex-row text-sub'},
       r(ActiveItemCount, { activeCount }),
       r(StatusFilterButtons, { filter }),
       r(ClearCompletedButton)
