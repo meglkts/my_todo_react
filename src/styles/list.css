@@ -20,6 +20,7 @@
 
 .task-input-text {
   border: none;
+  overflow: hidden;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

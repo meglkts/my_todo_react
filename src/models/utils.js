@@ -26,7 +26,7 @@ const getPluralization = (noun, count) => {
 
 const filter = (filterBy, array) => {
   const arrayCopy = clone(array)
-  return array.filter(filterBy)
+  return arrayCopy.filter(filterBy)
 }
 
 const getValues = (obj) => {
