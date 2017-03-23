@@ -16,8 +16,14 @@ const tasks = text.reduce((p, c) => {
 const filter = 'All'
 const activeCount = Object.keys(tasks).length
 
+const state = {
+  tasks,
+  filter,
+  activeCount
+}
+
 
 ReactDOM.render(
-  r(App, {tasks, filter, activeCount}),
+  r(App, state),
   document.getElementById('root')
 );
