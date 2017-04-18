@@ -87,6 +87,18 @@ describe('TaskList.js', () => {
       deepEqual(activeList, expectedActive)
       deepEqual(completedList, expectedCompleted)
     })
+
+    it('should return entire list if filter is `all`', () => {
+      const active1 = makeTask('id1', 'text', Date.now())
+      const active2 = makeTask('id2', 'text', Date.now())
+      const temp1 = makeTask('id3', 'text', Date.now())
+      const temp2 = makeTask('id4', 'text', Date.now())
+      const completed1 = toggleStatus(temp1, Date.now())
+      const completed2 = toggleStatus(temp2, Date.now())
+      const list = [active1, active2, completed1, completed2]
+      const actualList = filterTaskList('all', list)
+      deepEqual(actualList, list)
+    })
   })
 
   describe('tasksToTaskList()', () => {

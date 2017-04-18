@@ -34,6 +34,7 @@ const addTask = (now, list, text) => {
 }
 
 const filterTaskList = (filterStatus, taskList) => {
+  if (filterStatus === 'all') return taskList
   const filterBy = t => t.status === filterStatus
   return filter(filterBy, taskList)
 }
