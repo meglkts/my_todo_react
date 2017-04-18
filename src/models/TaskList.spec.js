@@ -108,7 +108,7 @@ describe('TaskList.js', () => {
   })
 
   describe('getActiveCount()', () => {
-    fit('should return a count of active tasks', () => {
+    it('should return a count of active tasks', () => {
       const active1 = makeTask('id1', 'text', Date.now())
       const active2 = makeTask('id2', 'text', Date.now())
       const temp1 = makeTask('id3', 'text', Date.now())

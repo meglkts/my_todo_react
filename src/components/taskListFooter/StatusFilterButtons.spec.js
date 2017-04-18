@@ -10,12 +10,9 @@ describe('<StatusFilterButtons/>', () => {
   it('should render AllFilter, ActiveFilter, and CompletedFilter components', () => {
     const footer = shallow(StatusFilterButtons({filter: 'Active'}))
     deepEqual(footer.find('button').length, 3)
-    // deepEqual(footer.find(AllFilter).length, 1)
-    // deepEqual(footer.find(ActiveFilter).length, 1)
-    // deepEqual(footer.find(CompletedFilter).length, 1)
   })
 
-  fit('should render filter buttons with one selected-filter class based on props.filter ', () => {
+  it('should render filter buttons with one selected-filter class based on props.filter ', () => {
     const footer = shallow(StatusFilterButtons({filter: 'Active'}))
     deepEqual(footer.find('.selected-filter').text(), 'Active')
   })
@@ -37,6 +34,20 @@ describe('<StatusFilterButtons/>', () => {
       const button = getFilterButton('Active', false)
       const classNames = button.props.className
       deepEqual(classNames.includes('selected-filter'), false)
+    })
+
+    it('should call broadcast when clicked', () => {
+      let expected
+      const broadcast = (type, payload) => {
+        expected = {
+          type,
+          payload
+        }
+      }
+      const button = shallow(StatusFilterButtons({broadcast}))
+        .find('#Active-filter')
+        .simulate('click')
+      deepEqual(expected, {type: 'filterTaskList', payload: 'Active'})
     })
   })
 })

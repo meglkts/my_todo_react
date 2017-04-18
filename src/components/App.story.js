@@ -24,17 +24,17 @@ const activeCount = getActiveCount(taskObj)
 
 storiesOf('App', module)
   .add('All tasks showing', () => (
-    r('body', {},
+    r('div', { className: 'storybook-body' },
       r(App, { tasks, filter: 'All', activeCount })
     )
   ))
   .add('Active tasks filtered', () => (
-    r('body', {},
+    r('div', { className: 'storybook-body' },
       r(App, { tasks: activeTasks, filter: 'Active', activeCount })
     )
   ))
   .add('Completd tasks filtered', () => (
-    r('body', {},
+    r('div', { className: 'storybook-body' },
       r(App, { tasks: completedTasks, filter: 'Completed', activeCount })
     )
   ))

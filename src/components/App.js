@@ -3,11 +3,13 @@ const r = React.createElement
 const { Title } = require('./Title')
 const { TaskListWrapper } = require('./TaskListWrapper')
 
-const App = ({tasks, filter, activeCount}) => {
+const App = (props) => {
+  console.log(props)
+  const {tasks, filter, activeCount, broadcast} = props
   return (
     r('div', {className: 'App'},
       Title(),
-      TaskListWrapper({tasks, filter, activeCount})
+      TaskListWrapper({tasks, filter, activeCount, broadcast})
     )
   )
 }

@@ -1,15 +1,23 @@
 const { createElement: r } = require('react')
 
-const getFilterButton = (filterBy, selected) => {
+const getFilterButton = (filterBy, selected, broadcast) => {
   const selectClass = selected ? 'selected-filter' : ''
-  return r('button', { className: `filter-button todo-btn ${selectClass} pd-sub` }, `${filterBy}`)
+  return (
+    r('button',
+      {
+        id: `${filterBy}-filter`,
+        className: `filter-button todo-btn ${selectClass} pd-sub`,
+        onClick: () => broadcast('filterTaskList', filterBy)
+      },
+      `${filterBy}`)
+  )
 }
 
-const StatusFilterButtons = ({filter}) => {
+const StatusFilterButtons = ({filter, broadcast}) => {
   return r('div', { className: 'status-filter flex-row pd-sub' },
-    getFilterButton('All', 'All' === filter),
-    getFilterButton('Active', 'Active' === filter),
-    getFilterButton('Completed', 'Completed' === filter)
+    getFilterButton('All', 'All' === filter, broadcast),
+    getFilterButton('Active', 'Active' === filter, broadcast),
+    getFilterButton('Completed', 'Completed' === filter, broadcast)
   )
 }
 
