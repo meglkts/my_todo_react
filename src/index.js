@@ -8,11 +8,11 @@ const { stateReducer } = require('./state_reducer')
 const { coordinators } = require('./coordinators')
 const { renderApp } = require('./app')
 
+const taskListFactory = require('./models/task_list_factory')
 
 let initialState = {
-  filter: 'All',
-  activeCount: 0,
-  tasks: []
+  filter: 'all',
+  tasks: taskListFactory.tasks()
 }
 
 const broadcastApplied = (type, payload) => broadcast(getCurrentState, setNewState, stateReducer, coordinators, renderApp, type, payload)

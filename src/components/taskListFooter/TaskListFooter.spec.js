@@ -1,16 +1,16 @@
 const { createElement: r } = require('react')
 const { TaskListFooter } = require('./TaskListFooter')
 const { ActiveItemCount } = require('./ActiveItemCount')
-const { StatusFilterButtons } = require('./StatusFilterButtons')
+const { FilterButton } = require('./FilterButton')
 const { ClearCompletedButton } = require('./ClearCompletedButton')
-const { shallow } = require('enzyme')
+const { mount } = require('enzyme')
 const { deepEqual } = require('assert')
 
 describe('<TaskListFooter/>', () => {
-  it('should render ActiveItemCount, StatusFilterButtons, and ClearCompletedButton components', () => {
-    const footer = shallow(TaskListFooter({activeCount: 5}))
+  it('should render ActiveItemCount, 3 FilterButton(s), and ClearCompletedButton components', () => {
+    const footer = mount(r(TaskListFooter, { tasks: {}, filter: 'all' }))
     deepEqual(footer.find(ActiveItemCount).length, 1)
-    deepEqual(footer.find(StatusFilterButtons).length, 1)
+    deepEqual(footer.find(FilterButton).length, 3)
     deepEqual(footer.find(ClearCompletedButton).length, 1)
   })
 })

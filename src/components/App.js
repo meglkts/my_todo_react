@@ -1,14 +1,20 @@
 const React = require('react')
 const r = React.createElement
 const { Title } = require('./Title')
-const { TaskListWrapper } = require('./TaskListWrapper')
+const { TaskInput } = require('./taskInput/TaskInput')
+const { TaskListContainer } = require('../containers/TaskList')
+const { TaskListFooter } = require('./taskListFooter/TaskListFooter')
 
 const App = (props) => {
-  const {tasks, filter, activeCount, broadcast} = props
+  const {tasks, filter, broadcast} = props
   return (
     r('div', {className: 'App'},
       Title(),
-      TaskListWrapper({tasks, filter, activeCount, broadcast})
+      r('div', { className: 'task-list-wrapper' },
+        r(TaskInput, {}),
+        r(TaskListContainer, { tasks, filter }),
+        r(TaskListFooter, { tasks, filter, broadcast })
+      )
     )
   )
 }
