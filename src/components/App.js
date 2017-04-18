@@ -4,7 +4,6 @@ const { Title } = require('./Title')
 const { TaskListWrapper } = require('./TaskListWrapper')
 
 const App = (props) => {
-  console.log(props)
   const {tasks, filter, activeCount, broadcast} = props
   return (
     r('div', {className: 'App'},
