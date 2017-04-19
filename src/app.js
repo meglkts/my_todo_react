@@ -1,5 +1,4 @@
-const React =require('react')
-const r = React.createElement
+const { createElement: r } = require('react')
 const ReactDOM = require('react-dom')
 const { AppContainer } = require('./containers/App')
 
