@@ -6,12 +6,12 @@ const { ActiveItemCount } = require('../components/taskListFooter/ActiveItemCoun
 
 describe('< ActiveItemCount />', () => {
   it('should render ActiveItemCount with activeCount prop set # of tasks with active status', () => {
-    const tasks = [
+    const taskList = [
       { status: 'active' },
       { status: 'active' },
       { status: 'completed' }
     ]
-    const container = shallow(r(ActiveCountContainer, { tasks }))
+    const container = shallow(r(ActiveCountContainer, { taskList }))
     const activeItemCount = container.find(ActiveItemCount)
     deepEqual(activeItemCount.props().activeCount, 2)
   })

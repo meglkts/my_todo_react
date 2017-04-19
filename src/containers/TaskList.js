@@ -2,8 +2,8 @@ const { createElement: r } = require('react')
 const { TaskList } = require('../components/taskList/TaskList')
 const { filterTaskList } = require('../models/TaskList')
 
-const TaskListContainer = ({ tasks, filter }) => {
-  const visibleTasks = filterTaskList(filter, tasks)
+const TaskListContainer = ({ taskList, filter }) => {
+  const visibleTasks = filterTaskList(filter, taskList)
   return r(TaskList, { visibleTasks })
 }
 

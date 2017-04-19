@@ -2,8 +2,8 @@ const { createElement: r } = require('react')
 const { ActiveItemCount } = require('../components/taskListFooter/ActiveItemCount')
 const { getActiveCount } = require('../models/TaskList')
 
-const ActiveCountContainer = ({ tasks }) => {
-  const activeCount = getActiveCount(tasks)
+const ActiveCountContainer = ({ taskList }) => {
+  const activeCount = getActiveCount(taskList)
   return r(ActiveItemCount, { activeCount })
 }
 

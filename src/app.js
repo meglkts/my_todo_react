@@ -1,11 +1,11 @@
 const React =require('react')
 const r = React.createElement
 const ReactDOM = require('react-dom')
-const { App } = require('./components/App')
+const { AppContainer } = require('./containers/App')
 
 const renderApp = (state) => {
   ReactDOM.render(
-    r(App, state),
+    r(AppContainer, state),
     document.getElementById('root')
   )
 }
