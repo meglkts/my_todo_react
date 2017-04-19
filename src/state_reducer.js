@@ -4,8 +4,9 @@ const stateReducer = (currentState) => ({
   setFilter: (filter) => {
     return merge(currentState, {filter})
   },
-  setTasks: (tasks) => {
-    return merge(currentState, {tasks})
+  updateTask: (task) => {
+    const tasks = merge(currentState.tasks, { [task.id]: task })
+    return merge(currentState, { tasks })
   },
   undefined: () => {
     return merge(currentState, {})

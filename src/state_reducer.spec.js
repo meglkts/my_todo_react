@@ -1,5 +1,6 @@
 const { stateReducer } = require('./state_reducer')
 const { deepEqual } = require('assert')
+const { merge } = require('./models/utils')
 
 describe('state_reducer.js', () => {
   describe('stateReducer()', () => {
@@ -10,11 +11,36 @@ describe('state_reducer.js', () => {
         deepEqual(newState, { foo: 'bar', filter: 'all' })
       })
     })
-    describe('stateReducer.setTasks()', () => {
-      it('should return a new state with given tasks', () => {
-        const currentState = { foo: 'bar', tasks: ['task1', 'task2'] }
-        const newState = stateReducer(currentState)['setTasks'](['task1'])
-        deepEqual(newState, { foo: 'bar', tasks: ['task1'] })
+
+    describe('stateReducer.updateTask()', () => {
+      it('should return a new state with an updated task if taskId already exists', () => {
+        const task1 = { id: 'task-id-1', status: 'active' }
+        const task2 = { id: 'task-id-2', status: 'active' }
+        const tasks = {
+          [task1.id]: task1,
+          [task2.id]: task2
+        }
+        const currentState = { foo: 'bar', tasks }
+        const updatedTask1 = merge(task1, {status: 'completed'})
+        const newState = stateReducer(currentState).updateTask(updatedTask1)
+        const updatedTasks = merge(tasks, { [updatedTask1.id]: updatedTask1 })
+        const expectedState = { foo: 'bar', tasks: updatedTasks }
+        deepEqual(newState, expectedState)
+      })
+
+      it('should return a new state with a new task added if taskId not exists', () => {
+        const task1 = { id: 'task-id-1', status: 'active' }
+        const task2 = { id: 'task-id-2', status: 'active' }
+        const tasks = {
+          [task1.id]: task1,
+          [task2.id]: task2
+        }
+        const currentState = { foo: 'bar', tasks }
+        const updatedTask = { id: 'new-task-id', status: 'active' }
+        const newState = stateReducer(currentState).updateTask(updatedTask)
+        const updatedTasks = merge(tasks, {[updatedTask.id]: updatedTask})
+        const expectedState = { foo: 'bar', tasks: updatedTasks }
+        deepEqual(newState, expectedState)
       })
     })
   })

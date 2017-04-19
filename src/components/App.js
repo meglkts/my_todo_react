@@ -11,7 +11,7 @@ const App = (props) => {
       Title(),
       r('div', { className: 'task-list-wrapper' },
         r(TaskInput, {}),
-        r(TaskListContainer, { taskList, filter }),
+        r(TaskListContainer, { taskList, filter, broadcast }),
         r(TaskListFooter, { taskList, filter, broadcast })
       )
     )

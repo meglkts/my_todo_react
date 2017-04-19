@@ -22,11 +22,12 @@ describe('< TaskList />', () => {
 
 describe('generateTaskItems', () => {
   it('should return a < TaskItem /> for each task', () => {
-    const actual = generateTaskItems(visibleTasks)
+    const onStatusToggleClick = () => {}
+    const actual = generateTaskItems(visibleTasks, onStatusToggleClick)
     const expected = [
-      TaskItem({task: task1, key: task1.id}),
-      TaskItem({task: task2, key: task2.id})
+      TaskItem({task: task1, key: task1.id, onStatusToggleClick: () => onStatusToggleClick(task1)}),
+      TaskItem({task: task2, key: task2.id, onStatusToggleClick: () => onStatusToggleClick(task2)})
     ]
-    deepEqual(actual, expected)
+    deepEqual(JSON.stringify(actual), JSON.stringify(expected))
   })
 })

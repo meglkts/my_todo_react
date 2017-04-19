@@ -8,4 +8,14 @@ describe('< StatusToggle />', () => {
     const wrapper = shallow(StatusToggle({status: 'active'}))
     deepEqual(wrapper.hasClass('active'), true)
   })
+
+  it('should call props.onStatusToggleClick with status when clicked', () => {
+    let expectedClick
+    const onStatusToggleClick = () => {
+      expectedClick = true
+    }
+    const wrapper = shallow(StatusToggle({status: 'active', onStatusToggleClick}))
+    wrapper.simulate('click')
+    deepEqual(expectedClick, true)
+  })
 })
