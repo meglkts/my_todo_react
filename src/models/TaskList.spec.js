@@ -1,8 +1,10 @@
 const { makeTask,
         toggleStatus,
         addTask,
+        deleteCompleted,
         filterTaskList,
         tasksToTaskList,
+        taskListToKeyed,
         getActiveCount } = require('./TaskList')
 const { deepEqual } = require('assert')
 const { merge } = require('merge')
@@ -69,6 +71,27 @@ describe('TaskList.js', () => {
     })
   })
 
+  describe('deleteCompleted()', () => {
+    it('should return the task object with completed tasks removed', () => {
+      const task1 = { id: 'task-id-1', status: 'active' }
+      const task2 = { id: 'task-id-2', status: 'completed' }
+      const task3 = { id: 'task-id-3', status: 'completed' }
+      const task4 = { id: 'task-id-4', status: 'active' }
+      const tasks = {
+        [task1.id]: task1,
+        [task2.id]: task2,
+        [task3.id]: task3,
+        [task4.id]: task4
+      }
+      const actual = deleteCompleted(tasks)
+      const expected = {
+        [task1.id]: task1,
+        [task4.id]: task4
+      }
+      deepEqual(actual, expected)
+    })
+  })
+
   describe('filterTaskList()', () => {
     it('should return a task list filtered by filter', () => {
       const active1 = makeTask('id1', 'text', Date.now())
@@ -115,6 +138,24 @@ describe('TaskList.js', () => {
       }
       const actual = tasksToTaskList(tasks)
       const expected = [task1, task2, task3, task4]
+      deepEqual(actual, expected)
+    })
+  })
+
+  describe('taskListToKeyed()', () => {
+    it('should return task object keyed by id', () => {
+      const task1 = makeTask('task-id-1', 'laundry', Date.now())
+      const task2 = makeTask('task-id-2', 'groceries', Date.now())
+      const task3 = makeTask('task-id-3', 'errands', Date.now())
+      const task4 = makeTask('task-id-4', 'email', Date.now())
+      const list = [task1, task2, task3, task4]
+      const actual = taskListToKeyed(list)
+      const expected = {
+        [task1.id]: task1,
+        [task2.id]: task2,
+        [task3.id]: task3,
+        [task4.id]: task4
+      }
       deepEqual(actual, expected)
     })
   })

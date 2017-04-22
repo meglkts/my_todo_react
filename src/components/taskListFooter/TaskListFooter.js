@@ -8,7 +8,7 @@ const TaskListFooter = ({taskList, filter, broadcast}) => {
     r('div', { className: 'flex-row text-sub task-list-footer space-btwn'},
       r(ActiveCountContainer, { taskList }),
       r(FilterContainer, { filter, broadcast }),
-      r(ClearCompletedButton)
+      r(ClearCompletedButton, { broadcast })
     )
   )
 }

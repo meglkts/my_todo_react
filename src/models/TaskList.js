@@ -33,6 +33,13 @@ const addTask = (now, list, text) => {
   }
 }
 
+const taskListToKeyed = (taskList) => {
+  return taskList.reduce((p, c) => {
+    p[c.id] = c
+    return p
+  }, {})
+}
+
 const filterTaskList = (filterStatus, taskList) => {
   if (filterStatus === 'all') return taskList
   const filterBy = t => t.status === filterStatus
@@ -43,6 +50,12 @@ const tasksToTaskList = (tasks) => {
   return getValues(tasks)
 }
 
+const deleteCompleted = (tasks) => {
+  const taskList = tasksToTaskList(tasks)
+  const activeOnly = filterTaskList('active', taskList)
+  return taskListToKeyed(activeOnly)
+}
+
 const getActiveCount = (tasks) => {
   return filterTaskList('active', tasksToTaskList(tasks)).length
 }
@@ -51,7 +64,9 @@ module.exports = {
   makeTask,
   toggleStatus,
   addTask,
+  deleteCompleted,
   filterTaskList,
   tasksToTaskList,
+  taskListToKeyed,
   getActiveCount
 }

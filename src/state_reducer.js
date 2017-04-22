@@ -1,4 +1,5 @@
-const { merge } = require('./models/utils')
+const { merge, clone } = require('./models/utils')
+const { deleteCompleted } = require('./models/TaskList')
 
 const stateReducer = (currentState) => ({
   setFilter: (filter) => {
@@ -6,6 +7,10 @@ const stateReducer = (currentState) => ({
   },
   updateTask: (task) => {
     const tasks = merge(currentState.tasks, { [task.id]: task })
+    return merge(currentState, { tasks })
+  },
+  deleteCompletedTasks: () => {
+    const tasks = deleteCompleted(clone(currentState.tasks))
     return merge(currentState, { tasks })
   },
   undefined: () => {
