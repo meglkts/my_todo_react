@@ -36,11 +36,16 @@ const getValues = (obj) => {
   })
 }
 
+const pluck = (key, array) => {
+  return array.map(el => el[key])
+}
+
 module.exports = {
   clone,
   isArray,
   merge,
   getPluralization,
   filter,
-  getValues
+  getValues,
+  pluck
 }

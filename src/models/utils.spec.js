@@ -4,7 +4,8 @@ const { clone,
         merge,
         getPluralization,
         filter,
-        getValues } = require('./utils')
+        getValues,
+        pluck } = require('./utils')
 
 describe('utils.js', () => {
   describe('clone()', () => {
@@ -79,6 +80,15 @@ describe('utils.js', () => {
     it('should return a string with appropriate pluralization based on count', () => {
       const obj = { a: 1, b: 2, c: 3 }
       deepEqual(getValues(obj), [1, 2, 3])
+    })
+  })
+
+  describe('pluck()', () => {
+    it('should return an array of the values for a given key plucked from each object', () => {
+      const obj1 = { a: 1, b: 2, c: 3 }
+      const obj2 = { a: 4, b: 5, c: 6 }
+      const key = 'b'
+      deepEqual(pluck('b', [obj1, obj2]), [2, 5])
     })
   })
 })
