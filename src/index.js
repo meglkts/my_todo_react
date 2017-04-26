@@ -1,6 +1,7 @@
 import './styles/app.css';
 import './styles/list.css';
 import './styles/item.css';
+import './styles/input.css';
 const { merge } = require('./models/utils')
 const { broadcast } = require('./broadcast')
 const { getCurrentState, setNewState } = require('./state')
@@ -9,6 +10,7 @@ const { coordinators } = require('./coordinators')
 const { renderApp } = require('./app')
 
 let initialState = {
+  completeAll: false,
   filter: 'all',
   tasks: []
 }

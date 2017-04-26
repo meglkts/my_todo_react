@@ -1,11 +1,11 @@
 const { createElement: r } = require('react')
-const { SelectAllToggle } = require('./SelectAllToggle')
+const { SelectAllContainer } = require('../../containers/SelectAll')
 const { TaskInputText } = require('./TaskInputText')
 
-const TaskInput = ({ broadcast }) => {
+const TaskInput = ({ completeAll, broadcast }) => {
   return (
     r('div', { className: 'flex-row left-align-row-pad task-input'},
-      r(SelectAllToggle, { selected: 'none' }),
+      r(SelectAllContainer, { completeAll, broadcast }),
       r(TaskInputText, { broadcast })
     )
   )

@@ -2,6 +2,17 @@ const { clone, merge, filter, getValues } = require('./utils')
 const uuid = require('uuid')
 const generateId = uuid.v4
 
+const taskListToKeyed = (taskList) => {
+  return taskList.reduce((p, c) => {
+    p[c.id] = c
+    return p
+  }, {})
+}
+
+const tasksToTaskList = (tasks) => {
+  return getValues(tasks)
+}
+
 const makeTask = (id, text, date) => {
   return {
     id,
@@ -24,6 +35,20 @@ const toggleStatus = (task, updated) => {
   return updatedTask
 }
 
+const setAllTasksStatus = (tasks, status) => {
+  const list = tasksToTaskList(tasks)
+  const listCompleted = list.map(t => merge(t, { status } ))
+  return taskListToKeyed(listCompleted)
+}
+
+const toggleAllTasksCompleted = (tasks) => {
+  return setAllTasksStatus(tasks, 'completed')
+}
+
+const toggleAllTasksActive = (tasks) => {
+  return setAllTasksStatus(tasks, 'active')
+}
+
 const addTask = (now, list, text) => {
   const newestTask = makeTask(generateId(), text, now())
   const newList = merge(list, {[newestTask.id]: newestTask})
@@ -33,21 +58,10 @@ const addTask = (now, list, text) => {
   }
 }
 
-const taskListToKeyed = (taskList) => {
-  return taskList.reduce((p, c) => {
-    p[c.id] = c
-    return p
-  }, {})
-}
-
 const filterTaskList = (filterStatus, taskList) => {
   if (filterStatus === 'all') return taskList
   const filterBy = t => t.status === filterStatus
   return filter(filterBy, taskList)
-}
-
-const tasksToTaskList = (tasks) => {
-  return getValues(tasks)
 }
 
 const deleteCompleted = (tasks) => {
@@ -63,6 +77,8 @@ const getActiveCount = (tasks) => {
 module.exports = {
   makeTask,
   toggleStatus,
+  toggleAllTasksCompleted,
+  toggleAllTasksActive,
   addTask,
   deleteCompleted,
   filterTaskList,

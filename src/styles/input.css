@@ -1,0 +1,49 @@
+
+.select-all-toggle {
+  height: 2rem;
+  width: 2rem;
+  background-size: 16px 16px;
+}
+
+.icon-all-complete {
+  opacity: 0.8;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIzMiIgaWQ9ImNoZXZyb24tZG93biIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMTIgTDE2IDI2IEwzMSAxMiBMMjcgOCBMMTYgMTggTDUgOCB6Ii8+PC9zdmc+');
+}
+
+.icon-all-active {
+  opacity: 0.1;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIzMiIgaWQ9ImNoZXZyb24tZG93biIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMTIgTDE2IDI2IEwzMSAxMiBMMjcgOCBMMTYgMTggTDUgOCB6Ii8+PC9zdmc+');
+}
+
+.task-input-text {
+  border: none;
+  overflow: hidden;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #e6e6e6;
+  font-style: italic;
+  border: none;
+  font-weight: 100 !important;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: #e6e6e6;
+  font-style: italic;
+  border: none;
+  font-weight: 100 !important;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: #e6e6e6;
+  font-style: italic;
+  border: none;
+  font-weight: 100 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #e6e6e6;
+  font-style: italic;
+  border: none;
+  font-weight: 100 !important;
+}

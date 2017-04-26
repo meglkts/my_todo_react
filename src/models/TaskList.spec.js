@@ -1,13 +1,16 @@
 const { makeTask,
         toggleStatus,
+        toggleAllTasksCompleted,
+        toggleAllTasksActive,
         addTask,
         deleteCompleted,
         filterTaskList,
         tasksToTaskList,
         taskListToKeyed,
         getActiveCount } = require('./TaskList')
+const taskListFactory = require('./task_list_factory')
 const { deepEqual } = require('assert')
-const { merge } = require('merge')
+const { merge } = require('./utils')
 
 describe('TaskList.js', () => {
   describe('makeTask()', () => {
@@ -52,6 +55,56 @@ describe('TaskList.js', () => {
       }
 
       deepEqual(backToActive, expectedActive)
+    })
+  })
+
+  describe('toggleAllTasksCompleted()', () => {
+    it('should set every task to have status: "complete"', () => {
+      const task1 = { id: 'task-id-1', status: 'active' }
+      const task2 = { id: 'task-id-2', status: 'completed' }
+      const task3 = { id: 'task-id-3', status: 'completed' }
+      const task4 = { id: 'task-id-4', status: 'active' }
+      const tasks = {
+        [task1.id]: task1,
+        [task2.id]: task2,
+        [task3.id]: task3,
+        [task4.id]: task4
+      }
+      const actual = toggleAllTasksCompleted(tasks)
+      const task1Completed = merge(task1, {status: 'completed'})
+      const task4Completed = merge(task4, {status: 'completed'})
+      const expected = {
+        [task1.id]: task1Completed,
+        [task2.id]: task2,
+        [task3.id]: task3,
+        [task4.id]: task4Completed
+      }
+      deepEqual(actual, expected)
+    })
+  })
+
+  describe('toggleAllTasksActive()', () => {
+    it('should set every task to have status: "active"', () => {
+      const task1 = { id: 'task-id-1', status: 'active' }
+      const task2 = { id: 'task-id-2', status: 'completed' }
+      const task3 = { id: 'task-id-3', status: 'completed' }
+      const task4 = { id: 'task-id-4', status: 'active' }
+      const tasks = {
+        [task1.id]: task1,
+        [task2.id]: task2,
+        [task3.id]: task3,
+        [task4.id]: task4
+      }
+      const actual = toggleAllTasksActive(tasks)
+      const task2Active = merge(task2, {status: 'active'})
+      const task3Active = merge(task3, {status: 'active'})
+      const expected = {
+        [task1.id]: task1,
+        [task2.id]: task2Active,
+        [task3.id]: task3Active,
+        [task4.id]: task4
+      }
+      deepEqual(actual, expected)
     })
   })
 

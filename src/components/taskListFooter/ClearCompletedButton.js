@@ -5,7 +5,8 @@ const ClearCompletedButton = ({broadcast}) => {
       className: `clear-completed todo-btn pd-sub`,
       onClick: () => broadcast('clearCompleted')
     },
-    'Clear completed')
+    'Clear completed'
+  )
 }
 
 module.exports = {

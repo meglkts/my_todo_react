@@ -66,5 +66,57 @@ describe('state_reducer.js', () => {
         deepEqual(newState, expectedState)
       })
     })
+
+    describe('stateReducer.setAllTasksCompleted()', () => {
+      it('should return a new state with all tasks set to complete', () => {
+        const task1 = { id: 'task-id-1', status: 'active' }
+        const task2 = { id: 'task-id-2', status: 'completed' }
+        const task3 = { id: 'task-id-3', status: 'completed' }
+        const task4 = { id: 'task-id-4', status: 'active' }
+        const tasks = {
+          [task1.id]: task1,
+          [task2.id]: task2,
+          [task3.id]: task3,
+          [task4.id]: task4
+        }
+        const currentState = { foo: 'bar', tasks, completeAll: false }
+        const newState = stateReducer(currentState).setAllTasksCompleted()
+        const task1Completed = merge(task1, {status: 'completed'})
+        const task4Completed = merge(task4, {status: 'completed'})
+        const updatedTasks = {
+          [task1.id]: task1Completed,
+          [task2.id]: task2,
+          [task3.id]: task3,
+          [task4.id]: task4Completed
+        }
+        const expectedState = { foo: 'bar', tasks: updatedTasks, completeAll: true }
+        deepEqual(newState, expectedState)
+      })
+    })
+
+    describe('stateReducer.setAllTasksActive()', () => {
+      it('should return a new state with all tasks set to active', () => {
+        const task1 = { id: 'task-id-1', status: 'completed' }
+        const task2 = { id: 'task-id-2', status: 'completed' }
+        const task3 = { id: 'task-id-3', status: 'completed' }
+        const task4 = { id: 'task-id-4', status: 'completed' }
+        const tasks = {
+          [task1.id]: task1,
+          [task2.id]: task2,
+          [task3.id]: task3,
+          [task4.id]: task4
+        }
+        const currentState = { foo: 'bar', tasks, completeAll: true }
+        const newState = stateReducer(currentState).setAllTasksActive()
+        const updatedTasks = {
+          [task1.id]: merge(task1, { status: 'active' }),
+          [task2.id]: merge(task2, { status: 'active' }),
+          [task3.id]: merge(task3, { status: 'active' }),
+          [task4.id]: merge(task4, { status: 'active' })
+        }
+        const expectedState = { foo: 'bar', tasks: updatedTasks, completeAll: false }
+        deepEqual(newState, expectedState)
+      })
+    })
   })
 })
