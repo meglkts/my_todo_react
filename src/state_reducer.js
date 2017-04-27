@@ -9,6 +9,11 @@ const stateReducer = (currentState) => ({
     const tasks = merge(currentState.tasks, { [task.id]: task })
     return merge(currentState, { tasks })
   },
+  deleteTask: (taskId) => {
+    const tasks = clone(currentState.tasks)
+    delete tasks[taskId]
+    return merge(currentState, { tasks })
+  },
   deleteCompletedTasks: () => {
     const tasks = deleteCompleted(clone(currentState.tasks))
     return merge(currentState, { tasks })

@@ -1,6 +1,6 @@
 const { stateReducer } = require('./state_reducer')
 const { deepEqual } = require('assert')
-const { merge } = require('./models/utils')
+const { merge, clone } = require('./models/utils')
 
 describe('state_reducer.js', () => {
   describe('stateReducer()', () => {
@@ -115,6 +115,30 @@ describe('state_reducer.js', () => {
           [task4.id]: merge(task4, { status: 'active' })
         }
         const expectedState = { foo: 'bar', tasks: updatedTasks, completeAll: false }
+        deepEqual(newState, expectedState)
+      })
+    })
+
+    describe('stateReducer.deleteTask()', () => {
+      it('should return a new state with given task deleted by id', () => {
+        const task1 = { id: 'task-id-1' }
+        const task2 = { id: 'task-id-2' }
+        const task3 = { id: 'task-id-3' }
+        const task4 = { id: 'task-id-4' }
+        const tasks = {
+          [task1.id]: task1,
+          [task2.id]: task2,
+          [task3.id]: task3,
+          [task4.id]: task4
+        }
+        const currentState = { foo: 'bar', tasks }
+        const newState = stateReducer(currentState).deleteTask('task-id-2')
+        const updatedTasks = {
+          [task1.id]: task1,
+          [task3.id]: task3,
+          [task4.id]: task4
+        }
+        const expectedState = { foo: 'bar', tasks: updatedTasks }
         deepEqual(newState, expectedState)
       })
     })

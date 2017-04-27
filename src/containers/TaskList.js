@@ -6,7 +6,8 @@ const TaskListContainer = ({ taskList, filter, broadcast }) => {
   const visibleTasks = filterTaskList(filter, taskList)
   return r(TaskList, {
     visibleTasks,
-    onStatusToggleClick: (task) => broadcast('toggleTaskStatus', task)
+    onStatusToggleClick: (task) => broadcast('toggleTaskStatus', task),
+    onClearButtonClick: (taskId) => broadcast('deleteTask', taskId)
   })
 }
 

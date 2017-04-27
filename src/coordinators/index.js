@@ -6,6 +6,7 @@ module.exports = {
   coordinators: {
     test: (stateReducer, payload) => stateReducer.test(payload),
     clearCompleted: (stateReducer) => stateReducer.deleteCompletedTasks(),
+    deleteTask: (stateReducer, payload) => stateReducer.deleteTask(payload),
     markAllComplete: (stateReducer) => stateReducer.setAllTasksCompleted(),
     markAllActive: (stateReducer) => stateReducer.setAllTasksActive(),
     filterTaskList,
